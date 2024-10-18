@@ -1,0 +1,54 @@
+.navbar{
+    background: firebrick;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.navbar-brand{
+    color: lightgrey;
+}
+
+.navbar-brand svg {
+    height: 50px;
+    width: 50px;
+    fill: lightgrey;
+    position: relative;
+}
+
+.active {
+    color: white;
+}
+.active > svg {
+    fill: white;
+}
+
+.navbar-brand:hover > svg {
+    fill: white;
+}
+
+.navbar-toggler svg{
+    fill: lightgrey;
+}
+
+.navbar-toggler svg:hover{
+    fill: white;
+}
+
+.navbar-nav > li > a:hover {
+    color:white;
+}
+
+.navbar-nav > li > a:active {
+    color:white;
+}
+
+.ms-auto{
+    margin-left: auto;
+}
+
+.nav-link{
+    color: lightgrey;
+}
+
+
+
