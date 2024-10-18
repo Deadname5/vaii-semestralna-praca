@@ -8,6 +8,10 @@
     color: lightgrey;
 }
 
+.navbar-brand > span{
+    padding-left: 7px;
+}
+
 .navbar-brand svg {
     height: 50px;
     width: 50px;
