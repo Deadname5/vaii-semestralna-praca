@@ -98,6 +98,10 @@ td {
     padding: 10px;
 }
 
+.pracovnik {
+    text-align: center;
+}
+
 .nadpis {
     font-style: oblique;
     font-weight: bolder;
