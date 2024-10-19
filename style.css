@@ -91,4 +91,12 @@ td {
     padding: 20px;
 }
 
+.nadpis {
+    font-style: oblique;
+    font-weight: bolder;
+}
+.bold {
+    font-weight: bold;
+}
+
 
