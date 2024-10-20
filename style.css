@@ -110,4 +110,32 @@ td {
     font-weight: bold;
 }
 
+.section {
+    padding: 60px;
+}
+
+.section-colored {
+    padding: 60px;
+    background: linear-gradient(to bottom, #e60000 0%, #ad0000 12%);
+}
+
+.content {
+    padding: 20px;
+    background: white;
+}
+
+.tlacitko {
+    background: linear-gradient(to bottom, #e60000 0%, #ad0000 12%);
+    width: 200px;
+
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+}
+
+
+
+
+
+
 
