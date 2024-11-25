@@ -35,6 +35,12 @@ class HomeController extends AControllerBase
      * Example of an action accessible without authorization
      * @return \App\Core\Responses\ViewResponse
      */
+
+    public function prices(): Response
+    {
+        return $this->html();
+    }
+
     public function contact(): Response
     {
         return $this->html();

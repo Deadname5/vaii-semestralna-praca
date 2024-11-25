@@ -1,27 +1,39 @@
-<?php
+<section class="section">
+    <div class="row mx-2">
+        <h1 class="nadpis">Kontaktné informácie</h1>
+        <div class="container-xxl col-auto mx-2 ">
 
-/** @var Array $data */
-
-/** @var \App\Core\LinkGenerator $link */
-?>
-
-<div class="row">
-    <div class="col">
-        <h3>Fakulta riadenia a informatiky</h3>
-        <strong>Adresa</strong>: Univerzitná 8215/1, 010 26 Žilina<br>
-        <strong>Tel. číslo</strong>: +421/41 513 4121<br>
-
-        <strong>GPS</strong>: 49°12'6,4"N 18°45'42,6"E
+            <h3 class="bold">Language site</h3>
+            <h4>Stránka: <a href="index.html">www.stranka.sk</a></h4>
+            <h4>Tel. kontakt +421 123 456 789</h4>
+            <h4>Mail: <a href="#">example@gmail.com</a></h4>
+            <h3 class="bold">Prevádzkovateľ</h3>
+            <h4>Firma s.r.o</h4>
+            <h4>Janka Hraška 15</h4>
+            <h4> 036 01 Martin</h4>
+        </div>
     </div>
-</div>
-<div class="row mt-3">
-    <div class="col">
-        <iframe width="100%" height="300"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=18.747396469116214%2C49.193792384417996%2C18.776578903198246%2C49.210336337994846&amp;layer=mapnik&amp;marker=49.202065053033984%2C18.761987686157227"></iframe>
+</section>
+<section class="section">
+    <div class="row mx-2">
+        <h1 class="nadpis">Zamestnanci</h1>
+        <div class="pracovnik mb-4 mb-lg-0 col-md-4 my-2">
+            <h3 class="bold">John Doe</h3>
+            <h4 class="employment">Administrátor</h4>
+            <h4 class="descriptive">+421 000 000 000</h4>
+            <h4 class="descriptive">john1@example.com</h4>
+        </div>
+        <div class="pracovnik mb-4 mb-lg-0 col-md-4 my-2">
+            <h3 class="bold">John Doe</h3>
+            <h4 class="employment">Učiteľ španielčiny</h4>
+            <h4 class="descriptive">+421 111 111 111</h4>
+            <h4 class="descriptive">john2@example.com</h4>
+        </div>
+        <div class="pracovnik mb-4 mb-lg-0 col-md-4 my-2">
+            <h3 class="bold">Jane Doe</h3>
+            <h4 class="employment">Učiteľka angličtiny</h4>
+            <h4 class="descriptive">+421 222 222 222</h4>
+            <h4 class="descriptive">jane@example.com</h4>
+        </div>
     </div>
-</div>
-<div class="row mt-3">
-    <div class="col">
-        <a href="<?= $link->url("home.index") ?>">Späť na hlavnú stránku</a>
-    </div>
-</div>
+</section>

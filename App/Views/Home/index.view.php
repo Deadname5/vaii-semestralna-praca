@@ -1,31 +1,38 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col mt-5">
-            <div class="text-center">
-                <h2>Vaííčko MVC FW</h2>
-                <img src="public/images/vaiicko_logo.png">
-                <p>
-                    Gratulujeme vám, úspešne sa vám podarilo nainštalovať a spustiť framework
-                    <strong>Vaííčko</strong> <?= \App\Config\Configuration::FW_VERSION ?>!<br>
-                    Dúfame, že sa Vám pomocou tohto frameworku vytvoríte nejakú skvelú aplikáciu.<br>
-                </p>
-                <p>
-                    Tento jednoduchý framework bol vytvorený pre lepšie pochopenie architektúry MVC.<br>
-                    Je určený pre študentov predmetu <em>vývoj aplikácií pre internet a intranet</em>, ale nielen im.
-                </p>
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-7 mb-5 mb-lg-0 order-lg-2">
+                <img class="img-fluid" src="images/flags.webp" alt="">
+            </div>
+            <div class="col-lg-4 order-lg-1">
+                <h1 class="bold">Lorem ipsum dolor sit amet, consectetur. </h1>
+                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in nibh nec tortor malesuada blandit et eu nisi. Nunc lectus sem, porta non metus eu. </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="section-colored">
+    <div class="container content">
+
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-10 col-lg-6 mb-5 mb-lg-0  mt-xl-2">
+                <img class="img-fluid kniha" src="images/book-open.jpeg" alt="">
+            </div>
+            <div class="col-sm-10 col-md-8 col-lg-5 col-xl-4 ms-lg-5 mt-xl-4 mt-xxl-5 pt-xxl-5">
+                <h2 class="mb-3 bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed turpis vel ante. </h2>
+                <p>Duis vel ex massa. Etiam volutpat velit est, et porttitor metus pulvinar sed. Pellentesque aliquam, metus sit amet vehicula aliquam, lacus risus mollis nibh, sed mattis mi dui vel odio. Morbi dui nulla, eleifend vitae ligula id, accumsan auctor felis. </p>
             </div>
         </div>
     </div>
-    <div class="row mt-3">
-        <div class="col text-center">
-            <h4>Autori</h4>
-            <div>
-                <a href="mailto:Patrik.Hrkut@fri.uniza.sk">doc. Ing. Patrik Hrkút, PhD.</a><br>
-                <a href="mailto:Michal.Duracik@fri.uniza.sk">Ing. Michal Ďuračík, PhD.</a><br>
-                <a href="mailto:Matej.Mesko@fri.uniza.sk">Ing. Matej Meško, PhD.</a><br><br>
-                &copy; 2020-<?= date('Y') ?> Žilinská univerzita v Žiline, Fakulta riadenia a informatiky, Katedra
-                softvérových technológií
-            </div>
+
+</section>
+
+<div class="container-fluid tlacitko justify-content-center">
+    <div class="tlacitko">
+        <div class="text-center">
+            <a class="bold nav-link active" href="#">JOIN NOW</a>
         </div>
     </div>
+
 </div>
