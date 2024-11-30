@@ -10,6 +10,8 @@ class StudentController extends AControllerBase
 {
     public function index(): Response
     {
-        return $this->html();
+        return $this->html([
+            'students' => Student::getAll()
+        ]);
     }
 }

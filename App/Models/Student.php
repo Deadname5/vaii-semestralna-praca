@@ -9,7 +9,9 @@ class Student extends Model
     protected ?int $id = null;
     protected ?string $jazyk;
 
-    protected ?string $date;
+    protected ?string $zaciatok;
+
+    protected ?string $koniec;
 
     public function getId(): ?int
     {
@@ -31,14 +33,24 @@ class Student extends Model
         $this->jazyk = $jazyk;
     }
 
-    public function getDate(): ?string
+    public function getZaciatok(): ?string
     {
-        return $this->date;
+        return $this->zaciatok;
     }
 
-    public function setDate(?string $date): void
+    public function setZaciatok(?string $zaciatok): void
     {
-        $this->date = $date;
+        $this->zaciatok = $zaciatok;
+    }
+
+    public function getKoniec(): ?string
+    {
+        return $this->koniec;
+    }
+
+    public function setKoniec(?string $koniec): void
+    {
+        $this->koniec = $koniec;
     }
 
 }
