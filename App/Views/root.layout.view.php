@@ -39,6 +39,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= $link->url("home.contact") ?>">Kontakty</a> <!--zamenit za $link -->
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= $link->url("student.index") ?>">Students</a> <!--zamenit za $link -->
+                </li>
             </ul>
         </div>
     </div>
