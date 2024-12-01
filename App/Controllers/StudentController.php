@@ -41,4 +41,21 @@ class StudentController extends AControllerBase
     {
         return $this->html();
     }
+
+    /**
+     * @throws HTTPException
+     */
+    public function edit(): Response
+    {
+        $id = (int) $this->request()->getValue('id');
+        $student = Student::getOne($id);
+
+        if (is_null($student)) {
+            throw new HTTPException(404);
+        }
+
+        return $this->html([
+            'student' => $student
+        ]);
+    }
 }
