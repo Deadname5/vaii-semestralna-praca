@@ -36,4 +36,9 @@ class StudentController extends AControllerBase
         }
 
     }
+
+    public function add(): Response
+    {
+        return $this->html();
+    }
 }
