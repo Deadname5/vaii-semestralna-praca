@@ -3,7 +3,7 @@
 /** @var Array $data  */
 /** @var \App\Models\Student $student  */
 
-
+/** @var \App\Core\LinkGenerator $link */
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="row p-0 m-0 px-md-4 mt-4">
                             <a class="btn btn-dark btn mb-2">Edit</a>
-                            <a class="btn btn-danger">Delete</a>
+                            <a href="<?= $link->url('student.delete', ['id' => $student->getId()])?>" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
             </div>
