@@ -1,8 +1,11 @@
-<form method="post" action="" enctype="multipart/form-data">
+<form method="post" action="<?= $link->url('student.save') ?>" enctype="multipart/form-data">
+
+    <input type="hidden" name="id" value="<?= @$data['student']?->getId() ?>">
+
     <label for="jazyk" class="form-label">Zvoleny jazyk</label>
     <div class="input-group has-validation mb-3">
         <?php if (@$data['student'] != ""): ?>
-            <input type="text" class="form-control" id="jazyk" name="jazyk" placeholder="<?= $data['student']->getJazyk() ?>" required>
+            <input type="text" class="form-control" id="jazyk" name="jazyk" value="<?= $data['student']->getJazyk() ?>" required>
         <?php else: ?>
             <input type="text" class="form-control" id="jazyk" name="jazyk"  required>
         <?php endif;?>
@@ -11,7 +14,7 @@
     <label for="zaciatok" class="form-label">Zaciatok vyucby</label>
     <div class="input-group has-validation mb-3">
         <?php if (@$data['student'] != ""): ?>
-            <input type="text" class="form-control" id="zaciatok" name="zaciatok" placeholder="<?= $data['student']->getZaciatok() ?>" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+            <input type="date" class="form-control" id="zaciatok" name="zaciatok" value="<?= $data['student']->getZaciatok() ?>" required>
         <?php else: ?>
             <input type="date" class="form-control" id="zaciatok" name="zaciatok" required>
         <?php endif;?>
@@ -19,7 +22,7 @@
     <label for="koniec" class="form-label">Koniec vyucby</label>
     <div class="input-group has-validation mb-3">
         <?php if (@$data['student'] != ""): ?>
-            <input type="text" class="form-control" id="koniec" name="koniec" placeholder="<?= $data['student']->getKoniec() ?>" onfocus="(this.type='date')" onblur="(this.type='text')">
+            <input type="date" class="form-control" id="koniec" name="koniec" value="<?= $data['student']->getKoniec() ?>">
         <?php else: ?>
             <input type="date" class="form-control" id="koniec" name="koniec">
         <?php endif;?>

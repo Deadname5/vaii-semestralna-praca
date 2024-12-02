@@ -58,4 +58,23 @@ class StudentController extends AControllerBase
             'student' => $student
         ]);
     }
+
+    public function save(): Response
+    {
+        $id = (int) $this->request()->getValue('id');
+        if ($id > 0)
+        {
+            $student = Student::getOne($id);
+        } else {
+            $student = new Student();
+        }
+        $student->setJazyk($this->request()->getValue('jazyk'));
+        $student->setZaciatok($this->request()->getValue('zaciatok'));
+        $this->request()->getValue('koniec') === "" ? $student->setKoniec(NULL) : $student->setKoniec($this->request()->getValue('koniec'));
+        $student->save();
+        return new RedirectResponse($this->url('student.index'));
+
+
+    }
+
 }
