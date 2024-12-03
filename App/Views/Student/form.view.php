@@ -1,3 +1,14 @@
+<?php if(!is_null(@$data['errors'])): ?>
+    <?php foreach ($data['errors'] as $error): ?>
+        <div class="alert alert-danger">
+            <?= $error ?>
+
+        </div>
+    <?php endforeach; ?>
+
+
+<?php endif; ?>
+
 <form method="post" action="<?= $link->url('student.save') ?>" enctype="multipart/form-data">
 
     <input type="hidden" name="id" value="<?= @$data['student']?->getId() ?>">

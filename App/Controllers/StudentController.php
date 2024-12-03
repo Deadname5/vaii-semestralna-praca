@@ -68,13 +68,43 @@ class StudentController extends AControllerBase
         } else {
             $student = new Student();
         }
-        $student->setJazyk($this->request()->getValue('jazyk'));
+
+        $student->setJazyk(strtoupper($this->request()->getValue('jazyk')));
         $student->setZaciatok($this->request()->getValue('zaciatok'));
         $this->request()->getValue('koniec') === "" ? $student->setKoniec(NULL) : $student->setKoniec($this->request()->getValue('koniec'));
-        $student->save();
-        return new RedirectResponse($this->url('student.index'));
+
+        $formErrors = $this->formErrors();
+
+        if (count($formErrors) > 0)
+        {
+            return $this->html([
+                'student' => $student,
+                'errors' => $formErrors
+            ], ($id > 0) ? 'edit' : 'add');
+
+        } else {
+            $student->save();
+            return new RedirectResponse($this->url('student.index'));
+        }
 
 
+    }
+
+    private function formErrors(): array
+    {
+        $errors = [];
+        if ($this->request()->getValue('jazyk') == "") {
+            $errors[] = "Pole jazyk musi byt vyplnene!";
+        }
+        if($this->request()->getValue('zaciatok') == "") {
+            $errors[] = "Pole zaciatok musi byt vyplnene!";
+        }
+
+        if ($this->request()->getValue('jazyk') != "" && strlen(str_replace(' ', '', $this->request()->getValue('jazyk'))) != 3) {
+            $errors[] = "Jazyk sa musi skladat z troch pismen";
+        }
+
+        return $errors;
     }
 
 }
