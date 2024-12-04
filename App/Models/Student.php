@@ -53,5 +53,4 @@ class Student extends Model
     {
         $this->koniec = $koniec;
     }
-
 }

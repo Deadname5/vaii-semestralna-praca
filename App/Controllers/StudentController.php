@@ -34,7 +34,6 @@ class StudentController extends AControllerBase
             $student->delete();
             return new RedirectResponse($this->url('student.index'));
         }
-
     }
 
     public function add(): Response
@@ -62,8 +61,7 @@ class StudentController extends AControllerBase
     public function save(): Response
     {
         $id = (int) $this->request()->getValue('id');
-        if ($id > 0)
-        {
+        if ($id > 0) {
             $student = Student::getOne($id);
         } else {
             $student = new Student();
@@ -75,19 +73,15 @@ class StudentController extends AControllerBase
 
         $formErrors = $this->formErrors();
 
-        if (count($formErrors) > 0)
-        {
+        if (count($formErrors) > 0) {
             return $this->html([
                 'student' => $student,
                 'errors' => $formErrors
             ], ($id > 0) ? 'edit' : 'add');
-
         } else {
             $student->save();
             return new RedirectResponse($this->url('student.index'));
         }
-
-
     }
 
     private function formErrors(): array
@@ -96,7 +90,7 @@ class StudentController extends AControllerBase
         if ($this->request()->getValue('jazyk') == "") {
             $errors[] = "Pole jazyk musi byt vyplnene!";
         }
-        if($this->request()->getValue('zaciatok') == "") {
+        if ($this->request()->getValue('zaciatok') == "") {
             $errors[] = "Pole zaciatok musi byt vyplnene!";
         }
 
@@ -106,5 +100,4 @@ class StudentController extends AControllerBase
 
         return $errors;
     }
-
 }

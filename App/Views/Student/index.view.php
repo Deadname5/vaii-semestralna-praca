@@ -14,8 +14,7 @@
             <a href="<?= $link->url('student.add') ?>" class="btn btn-success">Pridat studenta</a>
         </div>
         <div class="row justify-content-center">
-    <?php foreach ($data['students'] as $student): ?>
-
+    <?php foreach ($data['students'] as $student) : ?>
             <div class="border col-7 col-md-12 my-3">
                 <div class="row">
                     <div class="col-12 col-md-3">
