@@ -100,7 +100,7 @@ class StudentController extends AControllerBase
             $errors[] = "Pole zaciatok musi byt vyplnene!";
         }
 
-        if ($this->request()->getValue('jazyk') != "" && strlen(str_replace(' ', '', $this->request()->getValue('jazyk'))) != 3) {
+        if ($this->request()->getValue('jazyk') != "" && (strlen(str_replace(' ', '', $this->request()->getValue('jazyk'))) != 3 || strlen($this->request()->getValue('jazyk')) != 3)) {
             $errors[] = "Jazyk sa musi skladat z troch pismen";
         }
 
