@@ -33,8 +33,15 @@
                         <h2>Koniec: <?= $student->getKoniec() ?></h2>
                     </div>
                     <div class="row p-0 m-0 px-md-4 mt-4">
+
                             <a href="<?= $link->url('student.edit', ['id' => $student->getId()])?>" class="btn btn-dark btn mb-2">Edit</a>
-                            <a href="<?= $link->url('student.delete', ['id' => $student->getId()])?>" class="btn btn-danger">Delete</a>
+                            <a id="confirmation" onclick=openPopup(<?= $student->getId()?>) class="btn btn-danger">Delete</a>
+                        <div class="popup" id="<?= $student->getId()?>">
+                            <h2 class="bold ">Are you sure you want to delete this student?</h2>
+                            <a href="<?= $link->url('student.delete', ['id' => $student->getId()])?>" class="btn btn-danger">Yes</a>
+                            <a onclick="closePopup(<?= $student->getId()?>)" class="btn btn-dark">No</a>
+
+                        </div>
                     </div>
                 </div>
             </div>
