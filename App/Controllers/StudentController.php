@@ -69,7 +69,7 @@ class StudentController extends AControllerBase
 
         $student->setJazyk(strtoupper($this->request()->getValue('jazyk')));
         $student->setZaciatok($this->request()->getValue('zaciatok'));
-        $this->request()->getValue('koniec') === "" ? $student->setKoniec(NULL) : $student->setKoniec($this->request()->getValue('koniec'));
+        $this->request()->getValue('koniec') === "" ? $student->setKoniec(null) : $student->setKoniec($this->request()->getValue('koniec'));
 
         $formErrors = $this->formErrors();
 
