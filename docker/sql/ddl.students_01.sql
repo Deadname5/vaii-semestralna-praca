@@ -14,10 +14,20 @@ CREATE TABLE `students`
     `koniec` date,
 
     PRIMARY KEY (`id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4;
+);
 
-INSERT INTO `students` (`id`, `jazyk`, `zaciatok`, `koniec`)
-VALUES (1, 'ANJ', '2024-6-11', NULL),
-       (2, 'SPJ', '2024-6-18', NULL),
-       (3, 'SPJ', '2024-3-12', '2024-8-12');
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+     `id` int(11) NOT NULL AUTO_INCREMENT,
+     `login` text NOT NULL,
+     `password` text NOT NULL,
+     PRIMARY KEY (`id`)
+) ;
+
+INSERT INTO `students` (`id`, `jazyk`, `zaciatok`, `koniec`) VALUES
+    (1, 'ANJ', '2024-6-11', NULL),
+    (2, 'SPJ', '2024-6-18', NULL),
+    (3, 'SPJ', '2024-3-12', '2024-8-12');
+
+INSERT INTO `users` (`id`, `login`, `password`) VALUES
+    (1,	'login',	'123456');

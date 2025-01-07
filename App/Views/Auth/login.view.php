@@ -1,6 +1,6 @@
 <?php
 
-$layout = 'auth';
+
 /** @var Array $data */
 /** @var \App\Core\LinkGenerator $link */
 ?>
@@ -25,7 +25,7 @@ $layout = 'auth';
                                    placeholder="Password" required>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-primary" type="submit" name="submit">Prihlásiť
+                            <button class="btn btn-danger" type="submit" name="submit">Prihlásiť
                             </button>
                         </div>
                     </form>

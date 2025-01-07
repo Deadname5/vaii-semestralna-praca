@@ -39,9 +39,26 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= $link->url("home.contact") ?>">Kontakty</a> <!--zamenit za $link -->
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url("student.index") ?>">Students</a> <!--zamenit za $link -->
-                </li>
+                <?php if($auth->isLogged()) {?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= $link->url("student.index") ?>">Students</a> <!--zamenit za $link -->
+                    </li>
+                <?php } else {?>
+                    <li class="nav-item">
+                        <a class="nav-link">Formular</a> <!--zamenit za $link -->
+                    </li>
+                <?php }; ?>
+
+                <?php if($auth->isLogged()) {?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= $link->url("auth.logout") ?>">Odhlásenie</a> <!--zamenit za $link -->
+                    </li>
+                <?php } else {?>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a> <!--zamenit za $link -->
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>
