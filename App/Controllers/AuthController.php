@@ -34,7 +34,7 @@ class AuthController extends AControllerBase
         if (isset($formData['submit'])) {
             $logged = $this->app->getAuth()->login($formData['login'], $formData['password']);
             if ($logged) {
-                return $this->redirect($this->url("student.index"));
+                return $this->redirect($this->url("schedule.index"));
             }
         }
 

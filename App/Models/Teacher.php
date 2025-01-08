@@ -3,15 +3,16 @@
 namespace App\Models;
 
 use App\Core\Model;
-use DateTime;
 
-class Student extends Model
+class Teacher extends Model
 {
     protected ?int $id = null;
 
     protected ?string $name;
 
     protected ?string $surname;
+
+    protected ?string $language;
 
     public function getId(): ?int
     {
@@ -41,5 +42,15 @@ class Student extends Model
     public function setSurname(?string $surname): void
     {
         $this->surname = $surname;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(?string $language): void
+    {
+        $this->language = $language;
     }
 }

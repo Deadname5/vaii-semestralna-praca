@@ -41,7 +41,7 @@
                 </li>
                 <?php if($auth->isLogged()) {?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $link->url("student.index") ?>">Students</a> <!--zamenit za $link -->
+                        <a class="nav-link" href="<?= $link->url("schedule.index") ?>">Schedules</a> <!--zamenit za $link -->
                     </li>
                 <?php } else {?>
                     <li class="nav-item">
