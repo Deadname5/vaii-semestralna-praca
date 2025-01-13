@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <?php if($auth->getLoggedUserName() == 'admin'){ ?>
+            <?php if($auth->getLoggedUserRole() == 1){ ?>
             <h1 class="bold">Vsetci studenti</h1>
             <?php } else {?>
             <h1 class="bold">Moji studenti</h1>
@@ -21,7 +21,7 @@
         </div>
         <div class="row justify-content-center">
             <?php foreach ($data['schedules'] as $schedule) : ?>
-                <?php if($auth->getLoggedUserName() == 'admin'){ ?>
+                <?php if($auth->getLoggedUserRole() == 1){ ?>
                     <div class="col-12 col-md-3">
                         <h2>ID Teacher: <?= $schedule->getTeacherId() ?></h2>
                     </div>
@@ -45,11 +45,11 @@
                         <div class="row p-0 m-0 px-md-4 mt-4">
 
                             <a href="<?= $link->url('schedule.edit', ['id' => $schedule->getId()])?>" class="btn btn-dark btn mb-2">Edit</a>
-                            <a id="confirmation" onclick=openPopup(<?= $schedule->getId()?>) class="btn btn-danger">Delete</a>
+                            <a id="confirmation" onclick=deletePopUp.openPopup(<?= $schedule->getId()?>) class="btn btn-danger">Delete</a>
                             <div class="popup" id="<?= $schedule->getId()?>">
                                 <h2 class="bold" >Are you sure you want to delete this schedule?</h2>
                                 <a href="<?= $link->url('schedule.delete', ['id' => $schedule->getId()])?>" class="btn btn-danger">Yes</a>
-                                <a onclick="closePopup(<?= $schedule->getId()?>)" class="btn btn-dark">No</a>
+                                <a onclick="deletePopUp.closePopup(<?= $schedule->getId()?>)" class="btn btn-dark">No</a>
 
                             </div>
                         </div>

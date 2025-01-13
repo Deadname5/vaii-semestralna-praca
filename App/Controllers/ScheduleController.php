@@ -14,6 +14,7 @@ use App\Models\User;
 use Exception;
 use HttpResponseException;
 
+
 class ScheduleController extends AControllerBase
 {
     /**
@@ -82,7 +83,7 @@ class ScheduleController extends AControllerBase
         }
 
         $students = Student::getAll();
-        if ($auth->getLoggedUserName() == 'admin') {
+        if ($auth->getLoggedUserRole() == 1) {
             $teachers = Teacher::getAll();
             return $this->html([
                 'students' => $students,
@@ -124,7 +125,7 @@ class ScheduleController extends AControllerBase
         }
 
         $students = Student::getAll();
-        if ($auth->getLoggedUserName() == 'admin') {
+        if ($auth->getLoggedUserRole() == 1) {
             $teachers = Teacher::getAll();
             return $this->html([
                 'students' => $students,
@@ -145,6 +146,9 @@ class ScheduleController extends AControllerBase
         }
     }
 
+    /**
+     * @throws Exception
+     */
     public function save(): Response
     {
         $id = (int) $this->request()->getValue('id');
@@ -154,31 +158,69 @@ class ScheduleController extends AControllerBase
             $schedule = new Schedule();
         }
 
+
+        $teacher = Teacher::getOne((int) $this->request()->getValue('teacher'));
+        $student = Student::getOne((int) $this->request()->getValue('student'));
+        if (is_null($teacher)) {
+            throw new HTTPException(404, "Teacher doesn't exist");
+        }
+
+        if (is_null($student)) {
+            throw new HTTPException(404, "Student doesn't exist");
+        }
+
         $schedule->setTeacherId((int) $this->request()->getValue('teacher'));
         $schedule->setStudentId((int) $this->request()->getValue('student'));
-        $teacher = Teacher::getOne((int) $this->request()->getValue('teacher'));
         $schedule->setLanguage($teacher->getLanguage());
         $schedule->setStart($this->request()->getValue('start'));
         $this->request()->getValue('end') === "" ? $schedule->setEnd(null) : $schedule->setEnd($this->request()->getValue('end'));
 
-        // TODO: implement form errors
-        $schedule->save();
-        return new RedirectResponse($this->url('schedule.index'));
+        $formErrors = $this->formErrors();
+
+        if (count($formErrors) > 0) {
+            $students = Student::getAll();
+            if ($this->app->getAuth()->getLoggedUserRole() == 1) {
+                $teachers = Teacher::getAll();
+                return $this->html([
+                    'students' => $students,
+                    'teachers' => $teachers,
+                    'schedule' => $schedule,
+                    'errors' => $formErrors
+                ], ($id > 0) ? 'edit' : 'add');
+            } else {
+                return $this->html([
+                    'students' => $students,
+                    'teacher' => $teacher,
+                    'schedule' => $schedule,
+                    'errors' => $formErrors
+                ], ($id > 0) ? 'edit' : 'add');
+            }
+
+        } else {
+            $schedule->save();
+            return new RedirectResponse($this->url('schedule.index'));
+        }
 
     }
 
     private function formErrors(): array
     {
         $errors = [];
-        if ($this->request()->getValue('jazyk') == "") {
-            $errors[] = "Pole jazyk musi byt vyplnene!";
-        }
-        if ($this->request()->getValue('zaciatok') == "") {
-            $errors[] = "Pole zaciatok musi byt vyplnene!";
+
+        if ($this->request()->getValue('student') == "") {
+            $errors[] = "Pole student musi byt vyplnene!";
         }
 
-        if ($this->request()->getValue('jazyk') != "" && (strlen(str_replace(' ', '', $this->request()->getValue('jazyk'))) != 3 || strlen($this->request()->getValue('jazyk')) != 3)) {
-            $errors[] = "Jazyk sa musi skladat z troch pismen";
+        if ($this->request()->getValue('teacher') == "" && $this->app->getAuth()->getLoggedUserRole() == 1) {
+            $errors[] = "Pole ucitel musi byt vyplnene!";
+        }
+
+        if ($this->request()->getValue('start') == "") {
+            $errors[] = "Pole zaciatok vyucby musi byt vyplnene!";
+        }
+
+        if ($this->request()->getValue('start') != "" && $this->request()->getValue('end') != "" && $this->request()->getValue('end') < $this->request()->getValue('start')) {
+            $errors[] = "Koniec vyucby musi byt neskor ako zaciatok vyucby!";
         }
 
         return $errors;

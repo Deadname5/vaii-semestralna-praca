@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <h1 class="bold">Moji studenti</h1>
+            <h1 class="bold">Studenti</h1>
         </div>
         <div class="col-12 mb-4">
             <a href="<?= $link->url('student.add') ?>" class="btn btn-success">Pridat studenta</a>
@@ -20,25 +20,21 @@
                     <div class="col-12 col-md-3">
                         <h2>ID: <?= $student->getId() ?></h2>
 
-
                     </div>
                     <div class="col-12 col-md-3">
-                        <h2>Jazyk: <?= $student->getJazyk() ?></h2>
+                        <h2>Meno: <?= $student->getName() ?></h2>
                     </div>
                     <div class="col-12 col-md-3">
-                        <h2>Zaciatok: <?= $student->getZaciatok() ?></h2>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <h2>Koniec: <?= $student->getKoniec() ?></h2>
+                        <h2>Priezvisko: <?= $student->getSurname() ?></h2>
                     </div>
                     <div class="row p-0 m-0 px-md-4 mt-4">
 
                             <a href="<?= $link->url('student.edit', ['id' => $student->getId()])?>" class="btn btn-dark btn mb-2">Edit</a>
-                            <a id="confirmation" onclick=openPopup(<?= $student->getId()?>) class="btn btn-danger">Delete</a>
+                            <a id="confirmation" onclick=deletePopUp.openPopup(<?= $student->getId()?>) class="btn btn-danger">Delete</a>
                         <div class="popup" id="<?= $student->getId()?>">
                             <h2 class="bold ">Are you sure you want to delete this student?</h2>
                             <a href="<?= $link->url('student.delete', ['id' => $student->getId()])?>" class="btn btn-danger">Yes</a>
-                            <a onclick="closePopup(<?= $student->getId()?>)" class="btn btn-dark">No</a>
+                            <a onclick="deletePopUp.closePopup(<?= $student->getId()?>)" class="btn btn-dark">No</a>
 
                         </div>
                     </div>

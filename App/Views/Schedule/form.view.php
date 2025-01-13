@@ -9,7 +9,7 @@
 
 <?php if (!is_null(@$data['errors'])) : ?>
     <?php foreach ($data['errors'] as $error) : ?>
-        <div class="alert alert-danger">
+        <div id="serverError" class="alert alert-danger">
             <?= $error ?>
 
         </div>
@@ -18,8 +18,11 @@
 
 <?php endif; ?>
 
+<div id="errors"></div>
+<div id="success"></div>
+
 <form method="post" action="<?= $link->url('schedule.save') ?>" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="<?= @$data['schedule']?->getId() ?>">
+    <input type="hidden" name="id" id="id" value="<?= @$data['schedule']?->getId() ?>">
 
     <label for="student" class="form-label col-form-label-lg">Student</label>
     <div class="input-group">
@@ -35,7 +38,7 @@
     </div>
 
 
-    <?php if ($auth->getLoggedUserName() == 'admin') {?>
+    <?php if ($auth->getLoggedUserRole() == 1) {?>
         <label for="teacher" class="form-label col-form-label-lg">Ucitel</label>
         <div class="input-group">
             <select class="form-select form-select-lg" name="teacher" id="teacher">
@@ -51,7 +54,7 @@
         </div>
 
     <?php } else {?>
-        <input type="hidden" name="teacher" value="<?= @$data['teacher']?->getId() ?>">
+        <input type="hidden" name="teacher" id="teacher" value="<?= @$data['teacher']?->getId() ?>">
     <?php }?>
 
     <label for="start" class="form-label col-form-label-lg">Zaciatok vyucby</label>
@@ -73,6 +76,6 @@
         <?php endif;?>
 
     </div>
-    <button type="submit" class="btn btn-success">Ulozit</button>
+    <button type="submit" id="btn-schedule" class="btn btn-success">Ulozit</button>
 
 </form>

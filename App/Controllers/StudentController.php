@@ -4,16 +4,27 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\HTTPException;
+use App\Core\Responses\EmptyResponse;
 use App\Core\Responses\RedirectResponse;
 use App\Core\Responses\Response;
 use App\Models\Student;
 use Exception;
 use HttpResponseException;
+header('Access-Control-Allow-Origin: *');
 
 class StudentController extends AControllerBase
 {
+
     public function index(): Response
     {
+
+        $auth = $this->app->getAuth();
+
+
+        if (!$auth->isLogged()) {
+            return new RedirectResponse($this->url('auth.login'));
+        }
+
         return $this->html([
             'students' => Student::getAll()
         ]);
@@ -25,6 +36,13 @@ class StudentController extends AControllerBase
      */
     public function delete(): Response
     {
+        $auth = $this->app->getAuth();
+
+
+        if (!$auth->isLogged()) {
+            return new RedirectResponse($this->url('auth.login'));
+        }
+
         $id = (int) $this->request()->getValue('id');
         $student = Student::getOne($id);
 
@@ -38,6 +56,13 @@ class StudentController extends AControllerBase
 
     public function add(): Response
     {
+        $auth = $this->app->getAuth();
+
+
+        if (!$auth->isLogged()) {
+            return new RedirectResponse($this->url('auth.login'));
+        }
+
         return $this->html();
     }
 
@@ -46,6 +71,13 @@ class StudentController extends AControllerBase
      */
     public function edit(): Response
     {
+        $auth = $this->app->getAuth();
+
+
+        if (!$auth->isLogged()) {
+            return new RedirectResponse($this->url('auth.login'));
+        }
+
         $id = (int) $this->request()->getValue('id');
         $student = Student::getOne($id);
 
@@ -60,6 +92,14 @@ class StudentController extends AControllerBase
 
     public function save(): Response
     {
+        header('Access-Control-Allow-Origin: *');
+        $auth = $this->app->getAuth();
+
+
+        if (!$auth->isLogged()) {
+            return new RedirectResponse($this->url('auth.login'));
+        }
+
         $id = (int) $this->request()->getValue('id');
         if ($id > 0) {
             $student = Student::getOne($id);
@@ -67,9 +107,8 @@ class StudentController extends AControllerBase
             $student = new Student();
         }
 
-        $student->setJazyk(strtoupper($this->request()->getValue('jazyk')));
-        $student->setZaciatok($this->request()->getValue('zaciatok'));
-        $this->request()->getValue('koniec') === "" ? $student->setKoniec(null) : $student->setKoniec($this->request()->getValue('koniec'));
+        $student->setName(rtrim($this->request()->getValue('name')));
+        $student->setSurname(rtrim($this->request()->getValue('surname')));
 
         $formErrors = $this->formErrors();
 
@@ -82,20 +121,17 @@ class StudentController extends AControllerBase
             $student->save();
             return new RedirectResponse($this->url('student.index'));
         }
+
     }
 
     private function formErrors(): array
     {
         $errors = [];
-        if ($this->request()->getValue('jazyk') == "") {
-            $errors[] = "Pole jazyk musi byt vyplnene!";
+        if (rtrim($this->request()->getValue('name')) == "") {
+            $errors[] = "Pole meno musi byt vyplnene!";
         }
-        if ($this->request()->getValue('zaciatok') == "") {
-            $errors[] = "Pole zaciatok musi byt vyplnene!";
-        }
-
-        if ($this->request()->getValue('jazyk') != "" && (strlen(str_replace(' ', '', $this->request()->getValue('jazyk'))) != 3 || strlen($this->request()->getValue('jazyk')) != 3)) {
-            $errors[] = "Jazyk sa musi skladat z troch pismen";
+        if (rtrim($this->request()->getValue('surname')) == "") {
+            $errors[] = "Pole priezvisko musi byt vyplnene!";
         }
 
         return $errors;

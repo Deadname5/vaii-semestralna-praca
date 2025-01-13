@@ -55,7 +55,7 @@ CREATE TABLE `teachers` (
 ALTER TABLE users ADD CONSTRAINT user_teacher FOREIGN KEY (teacher_id) REFERENCES teachers (id) ON DELETE CASCADE;
 ALTER TABLE users ADD CONSTRAINT user_role FOREIGN KEY (roles_id) REFERENCES roles (id) ON DELETE CASCADE;
 ALTER TABLE schedules ADD CONSTRAINT FK_teacher FOREIGN KEY (teacher_id) REFERENCES teachers (id) ON DELETE CASCADE;
-ALTER TABLE schedules ADD CONSTRAINT FK_student FOREIGN KEY (teacher_id) REFERENCES students (id) ON DELETE CASCADE;
+ALTER TABLE schedules ADD CONSTRAINT FK_student FOREIGN KEY (student_id) REFERENCES students (id) ON DELETE CASCADE;
 
 
 

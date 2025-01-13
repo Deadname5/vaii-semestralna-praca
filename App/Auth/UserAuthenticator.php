@@ -26,9 +26,10 @@ class UserAuthenticator implements IAuthenticator
         }
         else
         {
-            $student = $user[0];
-            if ($login == $student->getLogin() && $password == $student->getPassword()) {
+            $check = $user[0];
+            if ($login == $check->getLogin() && $password == $check->getPassword()) {
                 $_SESSION['user'] = $login;
+                $_SESSION['type'] = $check->getRolesId();
                 return true;
             }
         }
@@ -52,6 +53,11 @@ class UserAuthenticator implements IAuthenticator
     public function getLoggedUserName(): string
     {
         return isset($_SESSION['user']) ? $_SESSION['user'] : throw new \Exception("User not logged in");
+    }
+
+    public function getLoggedUserRole(): mixed
+    {
+        return isset($_SESSION['type']) ? $_SESSION['type'] : throw new \Exception("User not logged in");
     }
 
     /**

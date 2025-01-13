@@ -15,7 +15,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="public\css\style.css">
-    <script src="public/js/script.js"></script>
+    <script src="public/js/script.js" type="module" defer></script>
 </head>
 <body>
 <nav class="navbar navbar-dark navbar-expand-lg">
@@ -43,11 +43,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= $link->url("schedule.index") ?>">Schedules</a> <!--zamenit za $link -->
                     </li>
-                <?php } else {?>
-                    <li class="nav-item">
-                        <a class="nav-link">Formular</a> <!--zamenit za $link -->
-                    </li>
-                <?php }; ?>
+                    <?php if($auth->getLoggedUserRole() == 1) {?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $link->url("student.index") ?>">Students</a> <!--zamenit za $link -->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $link->url("teacher.index") ?>">Teachers</a> <!--zamenit za $link -->
+                        </li>
+                    <?php }?>
+                <?php } ?>
 
                 <?php if($auth->isLogged()) {?>
                     <li class="nav-item">

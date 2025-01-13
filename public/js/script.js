@@ -1,13 +1,11 @@
-function openPopup(id) {
-    let popup = document.getElementById(id);
-    popup.classList.add("popup-visible");
-    popup.classList.remove("popup");
+import {StudentForm} from "./formCheck/StudentForm.js";
+import {deletePopUp} from "./deletePopUp.js";
+import {ScheduleForm} from "./formCheck/ScheduleForm.js";
 
-}
 
-function closePopup(id) {
-    let popup = document.getElementById(id);
-    popup.classList.add("popup");
-    popup.classList.remove("popup-visible");
+document.formStudent = new StudentForm();
+document.deletePopUp = new deletePopUp();
+document.formSchedule = new ScheduleForm();
 
-}
+
+
