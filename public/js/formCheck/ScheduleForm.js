@@ -8,6 +8,7 @@ class ScheduleForm extends DataService {
         try {
             document.getElementById("btn-schedule").onclick = async (me) => {
                 me.preventDefault();
+                document.getElementById("btn-schedule").disabled = true;
 
                 try {
                     while (true) {
@@ -57,6 +58,7 @@ class ScheduleForm extends DataService {
                         let stringHTML = `<div class="alert alert-danger">${error}</div>`;
                         err.innerHTML = err.innerHTML + stringHTML;
                     });
+                    document.getElementById("btn-schedule").disabled = false;
                 } else {
                     let save = await this.save(schedule, student, teacher, start, end);
                     if (save !== false) {
@@ -71,6 +73,7 @@ class ScheduleForm extends DataService {
                                 let stringHTML = `<div class="alert alert-danger">${error}</div>`;
                                 err.innerHTML = err.innerHTML + stringHTML;
                             });
+                            document.getElementById("btn-schedule").disabled = false;
                         }
                     }
                 }

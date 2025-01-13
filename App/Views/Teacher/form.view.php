@@ -52,11 +52,7 @@
     </div>
     <label for="password" class="form-label">Password</label>
     <div class="input-group has-validation mb-3">
-        <?php if (@$data['user'] != "") : ?>
-            <input type="text" class="form-control" id="password" name="password" value="<?= $data['user']->getPassword() ?>" required>
-        <?php else : ?>
             <input type="text" class="form-control" id="password" name="password" required>
-        <?php endif;?>
     </div>
     <button type="submit" id="btn-teacher" class="btn btn-success">Ulozit</button>
 

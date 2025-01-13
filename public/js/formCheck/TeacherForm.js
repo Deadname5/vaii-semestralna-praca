@@ -8,6 +8,7 @@ class TeacherForm extends DataService {
         /*TODO do form errors client side, async form saving*/
         try {
             document.getElementById("btn-teacher").onclick = async (me) => {
+                document.getElementById("btn-teacher").disabled = true;
                 me.preventDefault();
                 try {
                     while (true) {
@@ -91,6 +92,7 @@ class TeacherForm extends DataService {
                         let stringHTML = `<div class="alert alert-danger">${error}</div>`;
                         err.innerHTML = err.innerHTML + stringHTML;
                     });
+                    document.getElementById("btn-teacher").disabled = false;
                 } else {
                     let save = await this.save(teacher, user, name, surname, language, username, password);
                     if (save !== false) {
@@ -105,6 +107,7 @@ class TeacherForm extends DataService {
                                 let stringHTML = `<div class="alert alert-danger">${error}</div>`;
                                 err.innerHTML = err.innerHTML + stringHTML;
                             });
+                            document.getElementById("btn-teacher").disabled = true;
                         }
                     }
                 }

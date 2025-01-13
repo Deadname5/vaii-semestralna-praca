@@ -27,7 +27,8 @@ class UserAuthenticator implements IAuthenticator
         else
         {
             $check = $user[0];
-            if ($login == $check->getLogin() && $password == $check->getPassword()) {
+            $verify = password_verify($password, $check->getPassword());
+            if ($login == $check->getLogin() && $verify === true) {
                 $_SESSION['user'] = $login;
                 $_SESSION['type'] = $check->getRolesId();
                 return true;

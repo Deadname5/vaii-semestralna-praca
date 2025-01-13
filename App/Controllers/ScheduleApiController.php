@@ -54,6 +54,29 @@ class ScheduleApiController extends AControllerBase
         throw new HTTPException(400, "Bad attributes");
     }
 
+    /**
+     * @throws HTTPException
+     * @throws \JsonException
+     * @throws \Exception
+     */
+    public function getTeacher(): Response
+    {
+        $jsonData = $this->app->getRequest()->getRawBodyJSON();
+
+        if (
+            is_object($jsonData)
+            && property_exists($jsonData, 'id')
+            && !empty($jsonData->id)
+        ) {
+            $schedule = Schedule::getOne((int) $jsonData->id);
+            $teacher = Teacher::getOne($schedule->getTeacherId());
+
+            return $this->json($teacher);
+        }
+
+        throw new HTTPException(400, "Bad attributes");
+    }
+
 
     /**
      * @throws HTTPException

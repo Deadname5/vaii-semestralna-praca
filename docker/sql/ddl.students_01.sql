@@ -74,9 +74,9 @@ INSERT INTO `teachers` (`id`, `name`, `surname`, `language`) VALUES
 
 
 INSERT INTO `users` (`id`, `login`, `password`, `roles_id`, `teacher_id`) VALUES
-    (1,	'admin',	'admin',	1,	NULL),
-    (2,	'login',	'123456',	2,	1),
-    (3,	'lmao',	'asdfgh',	2,	2);
+    (1,	'admin',	'$2y$10$WLHfLCcaWz2rrOtIjGn0zej1smOeEfLy8Ater1Dp38s.2SGWYSu3K',	1,	NULL), /*password adminn*/
+    (2,	'login',	'$2y$10$7mIPCean.9ap5zpHxWi16OtxYcVGFKqxUx1fbqqFe4gNIwIVtPI.u',	2,	1), /*password 123456*/
+    (3,	'lmao',	'$2y$10$0l1QcazPbVHj6W8eL4vutuacX7OsLMsGDvI23LKcnMZAIqdry8zk.',	2,	2); /*password asdfgh*/
 
 INSERT INTO `schedules` (`id`, `teacher_id`, `student_id`, `language`, `start`, `end`) VALUES
     (1, 1,	1, 'ANJ', '2024-6-11', NULL),

@@ -113,6 +113,8 @@ class TeacherApiController extends AControllerBase
                 } else {
                     $user->setTeacherId($teacher->getId());
                 }
+                $hash = password_hash($jsonData->password, PASSWORD_DEFAULT);
+                $user->setPassword($hash);
                 $user->save();
                 return $this->json([
                     'formErrors' => null

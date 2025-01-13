@@ -7,6 +7,7 @@ class StudentForm extends DataService {
 
         try {
             document.getElementById("btn-student").onclick = (me) => {
+                document.getElementById("btn-student").disabled = true;
                 try {
                     while (true) {
                         document.getElementById("serverError").remove();
@@ -38,6 +39,7 @@ class StudentForm extends DataService {
                         err.innerHTML = err.innerHTML + stringHTML;
                     });
                     me.preventDefault();
+                    document.getElementById("btn-student").disabled = false;
                 }
             }
         } catch (error) {
