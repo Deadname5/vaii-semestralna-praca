@@ -25,3 +25,6 @@ Framework ma v adresári `<root>/docker` základnú konfiguráciu pre spustenie 
 - phpmyadmin server, ktorý sa automatický nastavený na databázový server na porte __8080__ a bude dostupný na
   adrese [http://localhost:8080/](http://localhost:8080/)
 
+  # Návod na inštaláciu
+  Na spustenie tohto semestrálneho projektu sú potrebné aplikácie Docker Desktop a PHPStrom. Po inštalovaní týchto aplikácií je potrenbé naklonovať kód do PHPStorm a spustiť Docker kontajnery. Po týchto krokoch by mala byť stránka spustiteľná. Pre správne fungovanie stránky by mal byť použitý link localhost/.
+
