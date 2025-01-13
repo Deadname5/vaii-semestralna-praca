@@ -5,7 +5,6 @@ import {DataService} from "./DataService.js";
 class TeacherForm extends DataService {
     constructor() {
         super("teacherApi");
-        /*TODO do form errors client side, async form saving*/
         try {
             document.getElementById("btn-teacher").onclick = async (me) => {
                 document.getElementById("btn-teacher").disabled = true;
