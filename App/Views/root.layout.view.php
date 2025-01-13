@@ -18,7 +18,7 @@
     <script src="public/js/script.js" type="module" defer></script>
 </head>
 <body>
-<nav class="navbar navbar-dark navbar-expand-lg">
+<nav class="navbar navbar-dark navbar-expand-xxl">
     <div class="container-fluid">
         <a class="navbar-brand" href="<?= $link->url("home.index") ?>">
             <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-globe" viewBox="0 0 16 16">
@@ -41,14 +41,14 @@
                 </li>
                 <?php if($auth->isLogged()) {?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $link->url("schedule.index") ?>">Schedules</a> <!--zamenit za $link -->
+                        <a class="nav-link" href="<?= $link->url("schedule.index") ?>">Harmonogramy</a> <!--zamenit za $link -->
                     </li>
                     <?php if($auth->getLoggedUserRole() == 1) {?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $link->url("student.index") ?>">Students</a> <!--zamenit za $link -->
+                            <a class="nav-link" href="<?= $link->url("student.index") ?>">Študenti</a> <!--zamenit za $link -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $link->url("teacher.index") ?>">Teachers</a> <!--zamenit za $link -->
+                            <a class="nav-link" href="<?= $link->url("teacher.index") ?>">Učitelia</a> <!--zamenit za $link -->
                         </li>
                     <?php }?>
                 <?php } ?>

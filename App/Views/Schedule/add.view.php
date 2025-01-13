@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Pridanie noveho harmonogramu</h1>
+            <h1>Pridanie nového harmonogramu</h1>
 
         </div>
         <?php require 'form.view.php' ?>

@@ -7,7 +7,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <h1 class="bold">Studenti</h1>
+            <h1 class="bold">Ucitelia</h1>
         </div>
         <div class="col-12 mb-4">
             <a href="<?= $link->url('teacher.add') ?>" class="btn btn-success">Pridat ucitela</a>
@@ -34,9 +34,9 @@
                             <a href="<?= $link->url('teacher.edit', ['id' => $teacher->getId()])?>" class="btn btn-dark btn mb-2">Edit</a>
                             <a id="confirmation" onclick=deletePopUp.openPopup(<?= $teacher->getId()?>) class="btn btn-danger">Delete</a>
                             <div class="popup" id="<?= $teacher->getId()?>">
-                                <h2 class="bold ">Are you sure you want to delete this teacher?</h2>
-                                <a href="<?= $link->url('teacher.delete', ['id' => $teacher->getId()])?>" class="btn btn-danger">Yes</a>
-                                <a onclick="deletePopUp.closePopup(<?= $teacher->getId()?>)" class="btn btn-dark">No</a>
+                                <h2 class="bold ">Naozej chcete zmazať totho učiteľa?</h2>
+                                <a href="<?= $link->url('teacher.delete', ['id' => $teacher->getId()])?>" class="btn btn-danger">Ano</a>
+                                <a onclick="deletePopUp.closePopup(<?= $teacher->getId()?>)" class="btn btn-dark">Nie</a>
 
                             </div>
                         </div>

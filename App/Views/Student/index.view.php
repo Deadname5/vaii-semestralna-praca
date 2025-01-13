@@ -32,9 +32,9 @@
                             <a href="<?= $link->url('student.edit', ['id' => $student->getId()])?>" class="btn btn-dark btn mb-2">Edit</a>
                             <a id="confirmation" onclick=deletePopUp.openPopup(<?= $student->getId()?>) class="btn btn-danger">Delete</a>
                         <div class="popup" id="<?= $student->getId()?>">
-                            <h2 class="bold ">Are you sure you want to delete this student?</h2>
-                            <a href="<?= $link->url('student.delete', ['id' => $student->getId()])?>" class="btn btn-danger">Yes</a>
-                            <a onclick="deletePopUp.closePopup(<?= $student->getId()?>)" class="btn btn-dark">No</a>
+                            <h2 class="bold ">Naozej chcete zmazať tohto študenta?</h2>
+                            <a href="<?= $link->url('student.delete', ['id' => $student->getId()])?>" class="btn btn-danger">Ano</a>
+                            <a onclick="deletePopUp.closePopup(<?= $student->getId()?>)" class="btn btn-dark">Nie</a>
 
                         </div>
                     </div>

@@ -9,15 +9,15 @@
     <div class="row">
         <div class="col-12">
             <?php if($auth->getLoggedUserRole() == 1){ ?>
-            <h1 class="bold">Vsetci studenti</h1>
+            <h1 class="bold">Vsetky harmonogramy</h1>
             <?php } else {?>
-            <h1 class="bold">Moji studenti</h1>
+            <h1 class="bold">Moje harmonogramy</h1>
             <?php } ?>
 
 
         </div>
         <div class="col-12 mb-4">
-            <a href="<?= $link->url('schedule.add') ?>" class="btn btn-success">Pridat studenta</a>
+            <a href="<?= $link->url('schedule.add') ?>" class="btn btn-success">Pridat harmonogram</a>
         </div>
         <div class="row justify-content-center">
             <?php foreach ($data['schedules'] as $schedule) : ?>
@@ -25,7 +25,7 @@
                     <?php if($auth->getLoggedUserRole() == 1){ ?>
                         <div id="teach<?= $schedule->getId()?>" class="row">
                             <div  class="col-12 col-md-3">
-                                <h2>ID Teacher: <?= $schedule->getTeacherId() ?></h2>
+                                <h2>ID Ucitel: <?= $schedule->getTeacherId() ?></h2>
                             </div>
                         </div>
                     <?php }?>
@@ -50,9 +50,9 @@
                             <a href="<?= $link->url('schedule.edit', ['id' => $schedule->getId()])?>" class="btn btn-dark btn mb-2">Edit</a>
                             <a id="confirmation" onclick=deletePopUp.openPopup(<?= $schedule->getId()?>) class="btn btn-danger">Delete</a>
                             <div class="popup" id="<?= $schedule->getId()?>">
-                                <h2 class="bold" >Are you sure you want to delete this schedule?</h2>
-                                <a href="<?= $link->url('schedule.delete', ['id' => $schedule->getId()])?>" class="btn btn-danger">Yes</a>
-                                <a onclick="deletePopUp.closePopup(<?= $schedule->getId()?>)" class="btn btn-dark">No</a>
+                                <h2 class="bold" >Naozej chcete zmazať tento harmonogram?</h2>
+                                <a href="<?= $link->url('schedule.delete', ['id' => $schedule->getId()])?>" class="btn btn-danger">Ano</a>
+                                <a onclick="deletePopUp.closePopup(<?= $schedule->getId()?>)" class="btn btn-dark">Nie</a>
 
                             </div>
                         </div>
