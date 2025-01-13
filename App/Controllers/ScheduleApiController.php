@@ -33,6 +33,29 @@ class ScheduleApiController extends AControllerBase
     }
 
     /**
+     * @throws \JsonException
+     * @throws \Exception
+     */
+    public function getStudent(): Response
+    {
+        $jsonData = $this->app->getRequest()->getRawBodyJSON();
+
+        if (
+            is_object($jsonData)
+            && property_exists($jsonData, 'id')
+            && !empty($jsonData->id)
+        ) {
+            $schedule = Schedule::getOne((int) $jsonData->id);
+            $student = Student::getOne($schedule->getStudentId());
+
+            return $this->json($student);
+        }
+
+        throw new HTTPException(400, "Bad attributes");
+    }
+
+
+    /**
      * @throws HTTPException
      * @throws \JsonException
      * @throws \Exception
@@ -85,7 +108,7 @@ class ScheduleApiController extends AControllerBase
                 ]);
             }
         }
-        throw new HTTPException(400, "Bad atributes");
+        throw new HTTPException(400, "Bad attributes");
     }
 
     private function formErrors($jsonData): array

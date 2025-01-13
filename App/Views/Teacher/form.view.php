@@ -1,6 +1,6 @@
 <?php if (!is_null(@$data['errors'])) : ?>
     <?php foreach ($data['errors'] as $error) : ?>
-        <div class="alert alert-danger">
+        <div id="serverError" class="alert alert-danger">
             <?= $error ?>
 
         </div>
@@ -9,10 +9,13 @@
 
 <?php endif; ?>
 
+<div id="errors"></div>
+<div id="success"></div>
+
 <form method="post" action="<?= $link->url('teacher.save') ?>" enctype="multipart/form-data">
 
-    <input type="hidden" name="id" value="<?= @$data['teacher']?->getId() ?>">
-    <input type="hidden" name="uid" value="<?= @$data['user']?->getId() ?>">
+    <input type="hidden" name="id" id="id" value="<?= @$data['teacher']?->getId() ?>">
+    <input type="hidden" name="uid" id="uid" value="<?= @$data['user']?->getId() ?>">
 
     <label for="name" class="form-label">Meno</label>
     <div class="input-group has-validation mb-3">
@@ -55,6 +58,6 @@
             <input type="text" class="form-control" id="password" name="password" required>
         <?php endif;?>
     </div>
-    <button type="submit" class="btn btn-success">Ulozit</button>
+    <button type="submit" id="btn-teacher" class="btn btn-success">Ulozit</button>
 
 </form>

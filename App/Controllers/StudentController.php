@@ -10,7 +10,6 @@ use App\Core\Responses\Response;
 use App\Models\Student;
 use Exception;
 use HttpResponseException;
-header('Access-Control-Allow-Origin: *');
 
 class StudentController extends AControllerBase
 {
