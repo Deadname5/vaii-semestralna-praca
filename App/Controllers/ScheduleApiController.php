@@ -13,7 +13,6 @@ use App\Models\Teacher;
 
 class ScheduleApiController extends AControllerBase
 {
-
     /**
      * @inheritDoc
      */
@@ -122,8 +121,6 @@ class ScheduleApiController extends AControllerBase
                 return $this->json([
                     'formErrors' => $formErrors
                 ]);
-
-
             } else {
                 $schedule->save();
                 return $this->json([

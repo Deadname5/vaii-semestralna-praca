@@ -39,11 +39,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= $link->url("home.contact") ?>">Kontakty</a> <!--zamenit za $link -->
                 </li>
-                <?php if($auth->isLogged()) {?>
+                <?php if ($auth->isLogged()) {?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= $link->url("schedule.index") ?>">Harmonogramy</a> <!--zamenit za $link -->
                     </li>
-                    <?php if($auth->getLoggedUserRole() == 1) {?>
+                    <?php if ($auth->getLoggedUserRole() == 1) {?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $link->url("student.index") ?>">Študenti</a> <!--zamenit za $link -->
                         </li>
@@ -53,12 +53,11 @@
                     <?php }?>
                 <?php } ?>
 
-                <?php if($auth->isLogged()) {?>
+                <?php if ($auth->isLogged()) {?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= $link->url("auth.logout") ?>">Odhlásenie</a> <!--zamenit za $link -->
                     </li>
                 <?php } else {?>
-
                     <li class="nav-item">
                         <a class="nav-link" href="<?= \App\Config\Configuration::LOGIN_URL ?>">Prihlásenie</a> <!--zamenit za $link -->
                     </li>

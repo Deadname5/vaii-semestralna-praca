@@ -63,5 +63,4 @@ class User extends Model
     {
         $this->teacher_id = $teacher_id;
     }
-
 }

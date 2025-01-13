@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <?php if($auth->getLoggedUserRole() == 1){ ?>
+            <?php if ($auth->getLoggedUserRole() == 1) { ?>
             <h1 class="bold">Vsetky harmonogramy</h1>
             <?php } else {?>
             <h1 class="bold">Moje harmonogramy</h1>
@@ -22,7 +22,7 @@
         <div class="row justify-content-center">
             <?php foreach ($data['schedules'] as $schedule) : ?>
                 <div class="border col-7 col-md-12 my-3">
-                    <?php if($auth->getLoggedUserRole() == 1){ ?>
+                    <?php if ($auth->getLoggedUserRole() == 1) { ?>
                         <div id="teach<?= $schedule->getId()?>" class="row">
                             <div  class="col-12 col-md-3">
                                 <h2>ID Ucitel: <?= $schedule->getTeacherId() ?></h2>

@@ -13,7 +13,6 @@ use Exception;
 
 class TeacherController extends AControllerBase
 {
-
     /**
      * @throws Exception
      */
@@ -137,8 +136,6 @@ class TeacherController extends AControllerBase
                 'errors' => $formErrors
             ], ($id > 0) ? 'edit' : 'add');
         } else {
-
-
             $teacher->save();
             if ($checkNew) {
                 $teachers = Teacher::getAll(orderBy: '`id` desc');
@@ -149,7 +146,6 @@ class TeacherController extends AControllerBase
             $user->save();
             return new RedirectResponse($this->url('teacher.index'));
         }
-
     }
 
     private function formErrors(): array

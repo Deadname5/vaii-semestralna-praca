@@ -14,7 +14,6 @@ use App\Models\User;
 use Exception;
 use HttpResponseException;
 
-
 class ScheduleController extends AControllerBase
 {
     /**
@@ -42,16 +41,12 @@ class ScheduleController extends AControllerBase
             return $this->html([
                 'schedules' => Schedule::getAll()
             ]);
-        }
-        else
-        {
+        } else {
             return $this->html([
 
                 'schedules' => Schedule::getAll('teacher_id = ?', [$user[0]->getTeacherId()])
             ]);
         }
-
-
     }
 
     /**
@@ -89,9 +84,7 @@ class ScheduleController extends AControllerBase
                 'students' => $students,
                 'teachers' => $teachers
             ]);
-        }
-        else
-        {
+        } else {
             $user = User::getAll('login LIKE ?', [$auth->getLoggedUserName()]);
             if (count($user) != 1) {
                 throw new HTTPException(400);
@@ -195,12 +188,10 @@ class ScheduleController extends AControllerBase
                     'errors' => $formErrors
                 ], ($id > 0) ? 'edit' : 'add');
             }
-
         } else {
             $schedule->save();
             return new RedirectResponse($this->url('schedule.index'));
         }
-
     }
 
     private function formErrors(): array
@@ -225,6 +216,4 @@ class ScheduleController extends AControllerBase
 
         return $errors;
     }
-
-
 }

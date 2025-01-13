@@ -15,7 +15,6 @@ use App\Models\User;
 
 class TeacherApiController extends AControllerBase
 {
-
     /**
      * @inheritDoc
      * @throws HTTPException
@@ -30,7 +29,7 @@ class TeacherApiController extends AControllerBase
      * @throws \JsonException
      * @throws \Exception
      */
-    public function findUser() : Response
+    public function findUser(): Response
     {
         $jsonData = $this->app->getRequest()->getRawBodyJSON();
         if (
@@ -46,8 +45,6 @@ class TeacherApiController extends AControllerBase
                 } else {
                     return new JsonResponse([]);
                 }
-
-
             } else {
                 if (sizeof($users) > 0) {
                     return new EmptyResponse();
@@ -55,8 +52,6 @@ class TeacherApiController extends AControllerBase
                     return new JsonResponse([]);
                 }
             }
-
-
         }
         throw new HTTPException(400, "Bad atributes");
     }
@@ -104,8 +99,6 @@ class TeacherApiController extends AControllerBase
                     'formErrors' => $formErrors
                 ]);
             } else {
-
-
                 $teacher->save();
                 if ($checkNew) {
                     $teachers = Teacher::getAll(orderBy: '`id` desc');

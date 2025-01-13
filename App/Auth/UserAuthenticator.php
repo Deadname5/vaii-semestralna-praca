@@ -7,9 +7,6 @@ use App\Models\User;
 
 class UserAuthenticator implements IAuthenticator
 {
-
-
-
     public function __construct()
     {
         session_start();
@@ -23,9 +20,7 @@ class UserAuthenticator implements IAuthenticator
         $user = User::getAll('`login` LIKE ?', [$login]);
         if (count($user) === 0) {
             return false;
-        }
-        else
-        {
+        } else {
             $check = $user[0];
             $verify = password_verify($password, $check->getPassword());
             if ($login == $check->getLogin() && $verify === true) {

@@ -13,7 +13,6 @@ use HttpResponseException;
 
 class StudentController extends AControllerBase
 {
-
     public function index(): Response
     {
 
@@ -120,7 +119,6 @@ class StudentController extends AControllerBase
             $student->save();
             return new RedirectResponse($this->url('student.index'));
         }
-
     }
 
     private function formErrors(): array

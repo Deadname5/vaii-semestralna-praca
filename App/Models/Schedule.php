@@ -76,5 +76,4 @@ class Schedule extends Model
     {
         $this->language = $language;
     }
-
 }
